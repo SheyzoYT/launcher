@@ -8,25 +8,13 @@ const username = setPseudo.pseudo;
 const password = setPseudo.token;
 
 let opts = {
-    root: getAppDataPath(".eronix/"),
-    version: {
-        number: "1.12.2",
-    },
-    forge: "forge-1.12.2-14.23.5.2859-universal.jar",
-    memory: {
-        max: "6G",
-        min: "1G"
-    }
-}
-let setOpts = {
     clientPackage: null,
     authorization: Authenticator.getAuth(username, password.value),
     root: getAppDataPath(".eronix/"),
     version: {
         number: "1.12.2",
     },
-    forge: "forge-1.12.2-14.23.5.2859-universal.jar",
-    //forge: "forge-1.12.2-14.23.5.2859-installer.jar",
+    forge: "./Eronix/forge.jar",
     memory: {
         max: "6G",
         min: "1G"
@@ -41,17 +29,12 @@ let setOpts = {
 function play() {
     alert("Exécution du jeu, Merci de patienter quelques instants.\nRun the game, Please wait a few moments.")
     launcher.launch(opts);
+    launcher.on('debug', (e) => console.log(e));
+    launcher.on('data', (e) => console.log(e));
     const game = document.getElementById('startGame');
     game.disabled = true;
-
-    setTimeout(() => {
-        launcher.launch(setOpts);
-    }, 1500);
 
     setTimeout(() => {
         game.disabled = false;
     }, 30000);
 }
-
-launcher.on('debug', (e) => console.log(e));
-launcher.on('data', (e) => console.log(e));

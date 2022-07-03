@@ -5,10 +5,10 @@ const ipc = ipcMain;
 const createWindow = () => {
     const win = new BrowserWindow({
         icon: __dirname + "./public/icons/512x512.png",
-        width: 400,
-        minWidth: 400,
-        height: 520,
-        minHeight: 520,
+        width: 1500,
+        minWidth: 1500,
+        height: 620,
+        minHeight: 620,
         resizable: false,
         frame: false,
         center: true,
